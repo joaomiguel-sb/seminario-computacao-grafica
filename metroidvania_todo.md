@@ -6,16 +6,16 @@ Organizado na ordem lógica de desenvolvimento. Requisitos acadêmicos estão no
 
 ## 1. Setup do Projeto
 
-- [ ] Criar projeto no Godot 4.4.X — RNF01
-- [ ] Configurar target PC (Windows) — RNF02
-- [ ] Definir estrutura de pastas e cenas do projeto
+- [x] Criar projeto no Godot 4.4.X — RNF01
+- [x] Configurar target PC (Windows) — RNF02
+- [x] Definir estrutura de pastas e cenas do projeto
 
 ## 2. Transformações Geométricas (Requisito Acadêmico — Prioridade Máxima)
 
 - [ ] Aplicar translação (movimentação de objetos) — RF20
 - [ ] Aplicar rotação — RF20
-- [ ] Aplicar escala — RF20
-- [ ] Aplicar reflexão (flip/espelhamento) — RF20
+- [x] Aplicar escala — RF20
+- [x] Aplicar reflexão (flip/espelhamento) — RF20
 
 > Todas as transformações são obrigatórias. Trabalhos que não implementarem todas terão impacto na avaliação.
 
@@ -23,7 +23,7 @@ Organizado na ordem lógica de desenvolvimento. Requisitos acadêmicos estão no
 
 - [ ] Criar sprite do personagem principal em pixel art — RNF05
 - [ ] Implementar movimentação em 8 direções (WASD/setas) — RF01
-- [ ] Implementar pulo (Barra de Espaço) — RF06
+- [x] Implementar pulo (Barra de Espaço) — RF06
 - [ ] Implementar agachar (Shift/C) — RF06
 - [ ] Mapear controles de teclado completos (Z/N normal, X/M especial) — RF07
 - [ ] Implementar colisão com paredes e obstáculos
