@@ -9,6 +9,14 @@ size = Vector2(32, 64)
 radius = 15.0
 height = 40.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(20, 2)
+
+[sub_resource type="Gradient" id="Gradient_3vyb7"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g2els"]
+gradient = SubResource("Gradient_3vyb7")
+
 [node name="Player" type="CharacterBody2D" unique_id=1855069706]
 script = ExtResource("1_3vyb7")
 
@@ -18,3 +26,16 @@ texture = SubResource("PlaceholderTexture2D_u8vuu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661134980]
 shape = SubResource("CapsuleShape2D_3vyb7")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1122334455]
+position = Vector2(25, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1249364915]
+shape = SubResource("RectangleShape2D_hitbox")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox" unique_id=2050080242]
+visible = false
+position = Vector2(0.50000036, -0.25)
+scale = Vector2(0.07421875, 0.5)
+texture = SubResource("GradientTexture1D_g2els")
