@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://clt6j28p275kk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8vuu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1855069706]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545362647]
+position = Vector2(-4.7683716e-07, -0.9999981)
+scale = Vector2(26, 38.000004)
+texture = SubResource("PlaceholderTexture2D_u8vuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661134980]
+shape = SubResource("CapsuleShape2D_3vyb7")
