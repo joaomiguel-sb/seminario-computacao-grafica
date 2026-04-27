@@ -3,15 +3,21 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const ATTACK_DURATION = 0.3
+const INVINCIBILITY_DURATION = 1.0
 
 var facing := 1
 var is_attacking := false
 var attack_timer := 0.0
 var jump_count := 0
+var health := 5
+var max_health := 5
+var is_invincible := false
+var invincibility_timer := 0.0
 
 
 func _ready() -> void:
 	add_to_group("player")
+	$Hitbox.area_entered.connect(_on_hitbox_area_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -20,6 +26,13 @@ func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+	# Invincibility frames
+	if is_invincible:
+		invincibility_timer -= delta
+		if invincibility_timer <= 0.0:
+			is_invincible = false
+			modulate.a = 1.0
 
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
@@ -68,6 +81,32 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func take_damage(amount: int, knockback_dir: int) -> void:
+	if is_invincible:
+		return
+	health -= amount
+	is_invincible = true
+	invincibility_timer = INVINCIBILITY_DURATION
+	velocity = Vector2(knockback_dir * 200, -150)
+
+	# Pisca o sprite durante a invencibilidade
+	var tween := create_tween().set_loops(5)
+	tween.tween_property(self, "modulate:a", 0.2, 0.1)
+	tween.tween_property(self, "modulate:a", 1.0, 0.1)
+
+	if health <= 0:
+		queue_free()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if not is_attacking:
+		return
+	if area.is_in_group("enemy_hurtbox"):
+		var enemy := area.get_parent()
+		if enemy.has_method("take_damage"):
+			enemy.take_damage(1, facing)
 
 
 func _spin() -> void:
