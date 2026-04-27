@@ -57,6 +57,10 @@ attack={
 ]
 }
 
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

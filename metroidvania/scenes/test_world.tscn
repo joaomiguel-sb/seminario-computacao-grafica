@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4fq0n7p1l2cs"]
 
 [ext_resource type="PackedScene" uid="uid://clt6j28p275kk" path="res://scenes/player.tscn" id="1_kyfjp"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="2_amxg5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcg8s"]
 size = Vector2(1152, 32)
@@ -22,3 +23,20 @@ color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=1855069706 instance=ExtResource("1_kyfjp")]
 position = Vector2(84, 578)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=127014283]
+position = Vector2(1100, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=291447561]
+position = Vector2(575, 622)
+shape = SubResource("RectangleShape2D_vcg8s")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2" unique_id=2121587563]
+custom_minimum_size = Vector2(1152, 32)
+offset_top = 606.0
+offset_right = 1152.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 1)
+
+[node name="Door" parent="." unique_id=1790422865 instance=ExtResource("2_amxg5")]
+position = Vector2(1135, 568)

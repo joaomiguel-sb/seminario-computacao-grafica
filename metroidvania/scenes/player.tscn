@@ -27,6 +27,10 @@ texture = SubResource("PlaceholderTexture2D_u8vuu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661134980]
 shape = SubResource("CapsuleShape2D_3vyb7")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=-982521730]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
 [node name="Hitbox" type="Area2D" parent="." unique_id=1122334455]
 position = Vector2(25, 0)
 

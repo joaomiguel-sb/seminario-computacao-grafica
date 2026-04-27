@@ -10,6 +10,10 @@ var attack_timer := 0.0
 var jump_count := 0
 
 
+func _ready() -> void:
+	add_to_group("player")
+
+
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		jump_count = 0
