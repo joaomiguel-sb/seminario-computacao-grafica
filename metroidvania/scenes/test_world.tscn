@@ -1,46 +1,292 @@
 [gd_scene format=3 uid="uid://b4fq0n7p1l2cs"]
 
-[ext_resource type="PackedScene" uid="uid://clt6j28p275kk" path="res://scenes/player.tscn" id="1_kyfjp"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="2_amxg5"]
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="3_3263u"]
+[ext_resource type="PackedScene" uid="uid://clt6j28p275kk" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="2_door"]
+[ext_resource type="PackedScene" uid="uid://ryre603iiqcv" path="res://scenes/enemy.tscn" id="3_enemy"]
+[ext_resource type="Texture2D" uid="uid://b7ofhskp5slrc" path="res://sprites/japan-neighborhood-pixel-art-platformer-tileset-basic/Platform-and-Objects.png" id="4_platform"]
+[ext_resource type="Texture2D" uid="uid://cvcdnmmiwwhep" path="res://sprites/japan-neighborhood-pixel-art-platformer-tileset-basic/Background.png" id="5_background"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcg8s"]
-size = Vector2(1152, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1600, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(32, 720)
 
 [node name="TestWorld" type="Node2D" unique_id=1906251932]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1482171031]
+[node name="Sky" type="ColorRect" parent="." unique_id=996911900]
+z_index = -20
+offset_right = 1600.0
+offset_bottom = 648.0
+color = Color(0.470588, 0.764706, 0.956863, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=529466376]
-position = Vector2(575, 622)
-shape = SubResource("RectangleShape2D_vcg8s")
+[node name="BuildingLeft" type="Sprite2D" parent="Sky" unique_id=167969176]
+position = Vector2(335, 473)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(16, 60, 96, 117)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=2070944932]
-custom_minimum_size = Vector2(1152, 32)
-offset_top = 606.0
-offset_right = 1152.0
-offset_bottom = 646.0
-color = Color(0, 0, 0, 1)
+[node name="BuildingCenter" type="Sprite2D" parent="Sky/BuildingLeft" unique_id=1942356535]
+position = Vector2(518, 439)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(124, 24, 96, 153)
 
-[node name="Player" parent="." unique_id=1855069706 instance=ExtResource("1_kyfjp")]
-position = Vector2(84, 578)
+[node name="BuildingCenter" type="Sprite2D" parent="Sky" unique_id=538011600]
+position = Vector2(518, 439)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(124, 24, 96, 153)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=127014283]
-position = Vector2(1100, 31)
+[node name="BuildingCenter2" type="Sprite2D" parent="Sky" unique_id=197206001]
+position = Vector2(146, 451)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(124, 24, 96, 153)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=291447561]
-position = Vector2(575, 622)
-shape = SubResource("RectangleShape2D_vcg8s")
+[node name="BuildingCenter3" type="Sprite2D" parent="Sky" unique_id=900039335]
+position = Vector2(1070, 452)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(124, 24, 96, 153)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D2" unique_id=2121587563]
-custom_minimum_size = Vector2(1152, 32)
-offset_top = 606.0
-offset_right = 1152.0
-offset_bottom = 646.0
-color = Color(0, 0, 0, 1)
+[node name="BuildingLeft2" type="Sprite2D" parent="Sky" unique_id=632549356]
+position = Vector2(709, 482)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(16, 60, 96, 117)
 
-[node name="Door" parent="." unique_id=1790422865 instance=ExtResource("2_amxg5")]
-position = Vector2(1135, 568)
+[node name="BuildingLeft3" type="Sprite2D" parent="Sky" unique_id=1332341570]
+position = Vector2(1445, 488)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(16, 60, 96, 117)
 
-[node name="Enemy" parent="." unique_id=776760406 instance=ExtResource("3_3263u")]
-position = Vector2(425, 561)
+[node name="BackgroundBuildings" type="Node2D" parent="." unique_id=1072871392]
+z_index = -10
+
+[node name="BuildingLeft" type="Sprite2D" parent="BackgroundBuildings" unique_id=272966699]
+position = Vector2(1260, 487)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(16, 60, 96, 117)
+
+[node name="BuildingCenter" type="Sprite2D" parent="BackgroundBuildings" unique_id=793953328]
+position = Vector2(892, 452)
+scale = Vector2(2, 2)
+texture = ExtResource("5_background")
+region_enabled = true
+region_rect = Rect2(124, 24, 96, 153)
+
+[node name="GroundVisuals" type="Node2D" parent="." unique_id=257353409]
+
+[node name="GroundTile00" type="Sprite2D" parent="GroundVisuals" unique_id=613819193]
+position = Vector2(32, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile01" type="Sprite2D" parent="GroundVisuals" unique_id=25670533]
+position = Vector2(96, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile02" type="Sprite2D" parent="GroundVisuals" unique_id=139956664]
+position = Vector2(160, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile03" type="Sprite2D" parent="GroundVisuals" unique_id=1433447955]
+position = Vector2(224, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile04" type="Sprite2D" parent="GroundVisuals" unique_id=1650805287]
+position = Vector2(288, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile05" type="Sprite2D" parent="GroundVisuals" unique_id=2104782978]
+position = Vector2(352, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile06" type="Sprite2D" parent="GroundVisuals" unique_id=663782730]
+position = Vector2(416, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile07" type="Sprite2D" parent="GroundVisuals" unique_id=2113230110]
+position = Vector2(480, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile08" type="Sprite2D" parent="GroundVisuals" unique_id=2112148001]
+position = Vector2(544, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile09" type="Sprite2D" parent="GroundVisuals" unique_id=2126918800]
+position = Vector2(608, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile10" type="Sprite2D" parent="GroundVisuals" unique_id=2014077439]
+position = Vector2(672, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile11" type="Sprite2D" parent="GroundVisuals" unique_id=2078293889]
+position = Vector2(736, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile12" type="Sprite2D" parent="GroundVisuals" unique_id=1289600699]
+position = Vector2(800, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile13" type="Sprite2D" parent="GroundVisuals" unique_id=1834093726]
+position = Vector2(864, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile14" type="Sprite2D" parent="GroundVisuals" unique_id=1657230529]
+position = Vector2(928, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile15" type="Sprite2D" parent="GroundVisuals" unique_id=1275160305]
+position = Vector2(992, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile16" type="Sprite2D" parent="GroundVisuals" unique_id=325842847]
+position = Vector2(1056, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile17" type="Sprite2D" parent="GroundVisuals" unique_id=1548466269]
+position = Vector2(1120, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile18" type="Sprite2D" parent="GroundVisuals" unique_id=125355177]
+position = Vector2(1184, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile19" type="Sprite2D" parent="GroundVisuals" unique_id=855474263]
+position = Vector2(1248, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile20" type="Sprite2D" parent="GroundVisuals" unique_id=1803305000]
+position = Vector2(1312, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile21" type="Sprite2D" parent="GroundVisuals" unique_id=1106858184]
+position = Vector2(1376, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile22" type="Sprite2D" parent="GroundVisuals" unique_id=311636006]
+position = Vector2(1440, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile23" type="Sprite2D" parent="GroundVisuals" unique_id=1345649776]
+position = Vector2(1504, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="GroundTile24" type="Sprite2D" parent="GroundVisuals" unique_id=1447722038]
+position = Vector2(1568, 616)
+scale = Vector2(4, 4)
+texture = ExtResource("4_platform")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="WorldBounds" type="StaticBody2D" parent="." unique_id=2079765801]
+
+[node name="FloorCollision" type="CollisionShape2D" parent="WorldBounds" unique_id=680655378]
+position = Vector2(800, 624)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="LeftWallCollision" type="CollisionShape2D" parent="WorldBounds" unique_id=1737876317]
+position = Vector2(-16, 324)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="RightWallCollision" type="CollisionShape2D" parent="WorldBounds" unique_id=949339112]
+position = Vector2(1616, 324)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="CeilingCollision" type="CollisionShape2D" parent="WorldBounds" unique_id=1063550182]
+position = Vector2(800, -16)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Player" parent="." unique_id=1855069706 instance=ExtResource("1_player")]
+position = Vector2(96, 568)
+
+[node name="Enemy" parent="." unique_id=776760406 instance=ExtResource("3_enemy")]
+position = Vector2(650, 568)
+
+[node name="Door" parent="." unique_id=1790422865 instance=ExtResource("2_door")]
+position = Vector2(1520, 568)
