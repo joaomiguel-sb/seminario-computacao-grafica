@@ -8,12 +8,30 @@
 
 config_version=5
 
+[GodexCLI]
+
+session_id=""
+use_git=false
+reasoning_effort="medium"
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="metroidvania"
 run/main_scene="uid://b4fq0n7p1l2cs"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godex-cli/plugin.cfg")
 
 [input]
 
@@ -57,16 +75,13 @@ attack={
 ]
 }
 
-[autoload]
-
-GameManager="*res://scripts/game_manager.gd"
-
 [physics]
 
 3d/physics_engine="Jolt Physics"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
